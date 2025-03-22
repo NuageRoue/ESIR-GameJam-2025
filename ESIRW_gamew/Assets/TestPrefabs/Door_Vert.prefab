@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 4898214143950857019}
   - component: {fileID: 424476021852961747}
   - component: {fileID: -8238394329642072699}
-  m_Layer: 3
+  - component: {fileID: 4843416372741746695}
+  m_Layer: 0
   m_Name: Door_Vert
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,3 +102,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position: 0
+  boxCollider: {fileID: -608775670878538296, guid: 5f310815472e1e848b978451ad84eb8a, type: 3}
+  collision:
+    serializedVersion: 2
+    m_Bits: 8
+  noCollision:
+    serializedVersion: 2
+    m_Bits: 1
+--- !u!61 &4843416372741746695
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4613808520524196552}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0

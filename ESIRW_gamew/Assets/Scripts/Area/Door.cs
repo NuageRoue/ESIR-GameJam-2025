@@ -1,12 +1,17 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    [SerializeField] AnchorDirection position; // la porte EN TANT QUE SORTIE (on la considère "dans" la salle)
+    [SerializeField] AnchorDirection position; // la porte EN TANT QUE SORTIE (on la considÃ¨re "dans" la salle)
+    [SerializeField] BoxCollider2D boxCollider;
+    [SerializeField] LayerMask collision;
+    [SerializeField] LayerMask noCollision;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -15,20 +20,35 @@ public class Door : MonoBehaviour
         
     }
 
-    public void SetOpened() // la fonction qui détermine si on peut passer par la porte
+    private void OnTriggerEnter(Collider other)
     {
-        GetComponent<SpriteRenderer>().color = Color.green;
+        Debug.Log("ici");
     }
 
-    public void SetClosed() // la fonction qui détermine si on peut passer par la porte
+    public void SetOpened() // la fonction qui dÃ©termine si on peut passer par la porte
+    {
+        GetComponent<SpriteRenderer>().color = Color.green;
+        boxCollider.enabled = false;
+        boxCollider.isTrigger = true;
+        boxCollider.includeLayers = (int)Mathf.Log(collision.value, 2);
+        
+        gameObject.layer = (int)Mathf.Log(noCollision.value, 2);
+
+    }
+
+    public void SetClosed() // la fonction qui dÃ©termine si on peut passer par la porte
     {
         GetComponent<SpriteRenderer>().color = Color.red;
+        boxCollider.isTrigger = false;
+        boxCollider.enabled = true;
+        boxCollider.includeLayers = (int)Mathf.Log(noCollision.value, 2);
+        gameObject.layer = (int)Mathf.Log(collision.value, 2);
     }
 
     public AnchorDirection DoorAsEntrance()
     {
         switch (position)
-        {// si elle est en haut à gauche, on entre par la droite
+        {// si elle est en haut Ã  gauche, on entre par la droite
             case (AnchorDirection.LEFT_TOP):
                 return AnchorDirection.RIGHT_TOP;
             case (AnchorDirection.LEFT_BOTTOM):
