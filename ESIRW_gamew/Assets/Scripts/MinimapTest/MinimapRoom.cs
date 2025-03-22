@@ -4,17 +4,19 @@ using UnityEngine;
 public class MinimapRoom : MonoBehaviour
 {
     [SerializeField] Vector2 screenPosition;
-    Camera cam;
+
+    [SerializeField] public bool isInRoom;
+    Animator animator;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        cam = FindAnyObjectByType<Camera>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(transform.position);
+        animator.SetBool("isGlowing", isInRoom);
     }
 }

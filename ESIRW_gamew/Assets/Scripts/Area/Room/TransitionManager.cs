@@ -26,6 +26,7 @@ public class TransitionManager : MonoBehaviour
         {
             cameraFollow.gameObject.transform.transform.position = t.CurrentValue;
         };
+        
         cameraFollow.gameObject.Tween("TweenCamera", lastCameraPosition, currentCameraPosition, cameraFollowSpeed, TweenScaleFunctions.Linear, updateCirclePos);
     }
 

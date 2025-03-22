@@ -2,7 +2,7 @@
     "name": "MainCharacter",
     "maps": [
         {
-            "name": "MainActionMap",
+            "name": "MovementActionMap",
             "id": "a9e7bb4e-2316-449b-818c-3b6209a02d84",
             "actions": [
                 {
@@ -143,6 +143,45 @@
                     "processors": "",
                     "groups": "",
                     "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "MinimapActionMap",
+            "id": "0b372461-4733-4476-8bd7-f112c2620adb",
+            "actions": [
+                {
+                    "name": "RoomSkill",
+                    "type": "Button",
+                    "id": "b8a96a21-599c-4c38-ae66-9c0b23b08cb2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4d89c676-72e5-459e-abc9-5d29fc6ef0a6",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RoomSkill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b77c7d39-ac9c-4514-9c55-b22180970e7f",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RoomSkill",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

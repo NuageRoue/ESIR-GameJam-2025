@@ -88,7 +88,7 @@ public partial class @CharacterController: IInputActionCollection2, IDisposable
     ""name"": ""MainCharacter"",
     ""maps"": [
         {
-            ""name"": ""MainActionMap"",
+            ""name"": ""MovementActionMap"",
             ""id"": ""a9e7bb4e-2316-449b-818c-3b6209a02d84"",
             ""actions"": [
                 {
@@ -233,19 +233,62 @@ public partial class @CharacterController: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""MinimapActionMap"",
+            ""id"": ""0b372461-4733-4476-8bd7-f112c2620adb"",
+            ""actions"": [
+                {
+                    ""name"": ""RoomSkill"",
+                    ""type"": ""Button"",
+                    ""id"": ""b8a96a21-599c-4c38-ae66-9c0b23b08cb2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""4d89c676-72e5-459e-abc9-5d29fc6ef0a6"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RoomSkill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b77c7d39-ac9c-4514-9c55-b22180970e7f"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RoomSkill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
 }");
-        // MainActionMap
-        m_MainActionMap = asset.FindActionMap("MainActionMap", throwIfNotFound: true);
-        m_MainActionMap_MovingAround = m_MainActionMap.FindAction("Moving Around", throwIfNotFound: true);
-        m_MainActionMap_Jump = m_MainActionMap.FindAction("Jump", throwIfNotFound: true);
+        // MovementActionMap
+        m_MovementActionMap = asset.FindActionMap("MovementActionMap", throwIfNotFound: true);
+        m_MovementActionMap_MovingAround = m_MovementActionMap.FindAction("Moving Around", throwIfNotFound: true);
+        m_MovementActionMap_Jump = m_MovementActionMap.FindAction("Jump", throwIfNotFound: true);
+        // MinimapActionMap
+        m_MinimapActionMap = asset.FindActionMap("MinimapActionMap", throwIfNotFound: true);
+        m_MinimapActionMap_RoomSkill = m_MinimapActionMap.FindAction("RoomSkill", throwIfNotFound: true);
     }
 
     ~@CharacterController()
     {
-        UnityEngine.Debug.Assert(!m_MainActionMap.enabled, "This will cause a leak and performance issues, CharacterController.MainActionMap.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_MovementActionMap.enabled, "This will cause a leak and performance issues, CharacterController.MovementActionMap.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_MinimapActionMap.enabled, "This will cause a leak and performance issues, CharacterController.MinimapActionMap.Disable() has not been called.");
     }
 
     /// <summary>
@@ -318,34 +361,34 @@ public partial class @CharacterController: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // MainActionMap
-    private readonly InputActionMap m_MainActionMap;
-    private List<IMainActionMapActions> m_MainActionMapActionsCallbackInterfaces = new List<IMainActionMapActions>();
-    private readonly InputAction m_MainActionMap_MovingAround;
-    private readonly InputAction m_MainActionMap_Jump;
+    // MovementActionMap
+    private readonly InputActionMap m_MovementActionMap;
+    private List<IMovementActionMapActions> m_MovementActionMapActionsCallbackInterfaces = new List<IMovementActionMapActions>();
+    private readonly InputAction m_MovementActionMap_MovingAround;
+    private readonly InputAction m_MovementActionMap_Jump;
     /// <summary>
-    /// Provides access to input actions defined in input action map "MainActionMap".
+    /// Provides access to input actions defined in input action map "MovementActionMap".
     /// </summary>
-    public struct MainActionMapActions
+    public struct MovementActionMapActions
     {
         private @CharacterController m_Wrapper;
 
         /// <summary>
         /// Construct a new instance of the input action map wrapper class.
         /// </summary>
-        public MainActionMapActions(@CharacterController wrapper) { m_Wrapper = wrapper; }
+        public MovementActionMapActions(@CharacterController wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "MainActionMap/MovingAround".
+        /// Provides access to the underlying input action "MovementActionMap/MovingAround".
         /// </summary>
-        public InputAction @MovingAround => m_Wrapper.m_MainActionMap_MovingAround;
+        public InputAction @MovingAround => m_Wrapper.m_MovementActionMap_MovingAround;
         /// <summary>
-        /// Provides access to the underlying input action "MainActionMap/Jump".
+        /// Provides access to the underlying input action "MovementActionMap/Jump".
         /// </summary>
-        public InputAction @Jump => m_Wrapper.m_MainActionMap_Jump;
+        public InputAction @Jump => m_Wrapper.m_MovementActionMap_Jump;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
-        public InputActionMap Get() { return m_Wrapper.m_MainActionMap; }
+        public InputActionMap Get() { return m_Wrapper.m_MovementActionMap; }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
         public void Enable() { Get().Enable(); }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
@@ -353,9 +396,9 @@ public partial class @CharacterController: IInputActionCollection2, IDisposable
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
         public bool enabled => Get().enabled;
         /// <summary>
-        /// Implicitly converts an <see ref="MainActionMapActions" /> to an <see ref="InputActionMap" /> instance.
+        /// Implicitly converts an <see ref="MovementActionMapActions" /> to an <see ref="InputActionMap" /> instance.
         /// </summary>
-        public static implicit operator InputActionMap(MainActionMapActions set) { return set.Get(); }
+        public static implicit operator InputActionMap(MovementActionMapActions set) { return set.Get(); }
         /// <summary>
         /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
         /// </summary>
@@ -363,11 +406,11 @@ public partial class @CharacterController: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
         /// </remarks>
-        /// <seealso cref="MainActionMapActions" />
-        public void AddCallbacks(IMainActionMapActions instance)
+        /// <seealso cref="MovementActionMapActions" />
+        public void AddCallbacks(IMovementActionMapActions instance)
         {
-            if (instance == null || m_Wrapper.m_MainActionMapActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_MainActionMapActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_MovementActionMapActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_MovementActionMapActionsCallbackInterfaces.Add(instance);
             @MovingAround.started += instance.OnMovingAround;
             @MovingAround.performed += instance.OnMovingAround;
             @MovingAround.canceled += instance.OnMovingAround;
@@ -382,8 +425,8 @@ public partial class @CharacterController: IInputActionCollection2, IDisposable
         /// <remarks>
         /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
         /// </remarks>
-        /// <seealso cref="MainActionMapActions" />
-        private void UnregisterCallbacks(IMainActionMapActions instance)
+        /// <seealso cref="MovementActionMapActions" />
+        private void UnregisterCallbacks(IMovementActionMapActions instance)
         {
             @MovingAround.started -= instance.OnMovingAround;
             @MovingAround.performed -= instance.OnMovingAround;
@@ -394,12 +437,12 @@ public partial class @CharacterController: IInputActionCollection2, IDisposable
         }
 
         /// <summary>
-        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="MainActionMapActions.UnregisterCallbacks(IMainActionMapActions)" />.
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="MovementActionMapActions.UnregisterCallbacks(IMovementActionMapActions)" />.
         /// </summary>
-        /// <seealso cref="MainActionMapActions.UnregisterCallbacks(IMainActionMapActions)" />
-        public void RemoveCallbacks(IMainActionMapActions instance)
+        /// <seealso cref="MovementActionMapActions.UnregisterCallbacks(IMovementActionMapActions)" />
+        public void RemoveCallbacks(IMovementActionMapActions instance)
         {
-            if (m_Wrapper.m_MainActionMapActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_MovementActionMapActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
@@ -409,27 +452,123 @@ public partial class @CharacterController: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
         /// </remarks>
-        /// <seealso cref="MainActionMapActions.AddCallbacks(IMainActionMapActions)" />
-        /// <seealso cref="MainActionMapActions.RemoveCallbacks(IMainActionMapActions)" />
-        /// <seealso cref="MainActionMapActions.UnregisterCallbacks(IMainActionMapActions)" />
-        public void SetCallbacks(IMainActionMapActions instance)
+        /// <seealso cref="MovementActionMapActions.AddCallbacks(IMovementActionMapActions)" />
+        /// <seealso cref="MovementActionMapActions.RemoveCallbacks(IMovementActionMapActions)" />
+        /// <seealso cref="MovementActionMapActions.UnregisterCallbacks(IMovementActionMapActions)" />
+        public void SetCallbacks(IMovementActionMapActions instance)
         {
-            foreach (var item in m_Wrapper.m_MainActionMapActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_MovementActionMapActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_MainActionMapActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_MovementActionMapActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
     /// <summary>
-    /// Provides a new <see cref="MainActionMapActions" /> instance referencing this action map.
+    /// Provides a new <see cref="MovementActionMapActions" /> instance referencing this action map.
     /// </summary>
-    public MainActionMapActions @MainActionMap => new MainActionMapActions(this);
+    public MovementActionMapActions @MovementActionMap => new MovementActionMapActions(this);
+
+    // MinimapActionMap
+    private readonly InputActionMap m_MinimapActionMap;
+    private List<IMinimapActionMapActions> m_MinimapActionMapActionsCallbackInterfaces = new List<IMinimapActionMapActions>();
+    private readonly InputAction m_MinimapActionMap_RoomSkill;
     /// <summary>
-    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "MainActionMap" which allows adding and removing callbacks.
+    /// Provides access to input actions defined in input action map "MinimapActionMap".
     /// </summary>
-    /// <seealso cref="MainActionMapActions.AddCallbacks(IMainActionMapActions)" />
-    /// <seealso cref="MainActionMapActions.RemoveCallbacks(IMainActionMapActions)" />
-    public interface IMainActionMapActions
+    public struct MinimapActionMapActions
+    {
+        private @CharacterController m_Wrapper;
+
+        /// <summary>
+        /// Construct a new instance of the input action map wrapper class.
+        /// </summary>
+        public MinimapActionMapActions(@CharacterController wrapper) { m_Wrapper = wrapper; }
+        /// <summary>
+        /// Provides access to the underlying input action "MinimapActionMap/RoomSkill".
+        /// </summary>
+        public InputAction @RoomSkill => m_Wrapper.m_MinimapActionMap_RoomSkill;
+        /// <summary>
+        /// Provides access to the underlying input action map instance.
+        /// </summary>
+        public InputActionMap Get() { return m_Wrapper.m_MinimapActionMap; }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
+        public void Enable() { Get().Enable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
+        public void Disable() { Get().Disable(); }
+        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
+        public bool enabled => Get().enabled;
+        /// <summary>
+        /// Implicitly converts an <see ref="MinimapActionMapActions" /> to an <see ref="InputActionMap" /> instance.
+        /// </summary>
+        public static implicit operator InputActionMap(MinimapActionMapActions set) { return set.Get(); }
+        /// <summary>
+        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <param name="instance">Callback instance.</param>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
+        /// </remarks>
+        /// <seealso cref="MinimapActionMapActions" />
+        public void AddCallbacks(IMinimapActionMapActions instance)
+        {
+            if (instance == null || m_Wrapper.m_MinimapActionMapActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_MinimapActionMapActionsCallbackInterfaces.Add(instance);
+            @RoomSkill.started += instance.OnRoomSkill;
+            @RoomSkill.performed += instance.OnRoomSkill;
+            @RoomSkill.canceled += instance.OnRoomSkill;
+        }
+
+        /// <summary>
+        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
+        /// </summary>
+        /// <remarks>
+        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
+        /// </remarks>
+        /// <seealso cref="MinimapActionMapActions" />
+        private void UnregisterCallbacks(IMinimapActionMapActions instance)
+        {
+            @RoomSkill.started -= instance.OnRoomSkill;
+            @RoomSkill.performed -= instance.OnRoomSkill;
+            @RoomSkill.canceled -= instance.OnRoomSkill;
+        }
+
+        /// <summary>
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="MinimapActionMapActions.UnregisterCallbacks(IMinimapActionMapActions)" />.
+        /// </summary>
+        /// <seealso cref="MinimapActionMapActions.UnregisterCallbacks(IMinimapActionMapActions)" />
+        public void RemoveCallbacks(IMinimapActionMapActions instance)
+        {
+            if (m_Wrapper.m_MinimapActionMapActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        /// <summary>
+        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
+        /// </summary>
+        /// <remarks>
+        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
+        /// </remarks>
+        /// <seealso cref="MinimapActionMapActions.AddCallbacks(IMinimapActionMapActions)" />
+        /// <seealso cref="MinimapActionMapActions.RemoveCallbacks(IMinimapActionMapActions)" />
+        /// <seealso cref="MinimapActionMapActions.UnregisterCallbacks(IMinimapActionMapActions)" />
+        public void SetCallbacks(IMinimapActionMapActions instance)
+        {
+            foreach (var item in m_Wrapper.m_MinimapActionMapActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_MinimapActionMapActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    /// <summary>
+    /// Provides a new <see cref="MinimapActionMapActions" /> instance referencing this action map.
+    /// </summary>
+    public MinimapActionMapActions @MinimapActionMap => new MinimapActionMapActions(this);
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "MovementActionMap" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="MovementActionMapActions.AddCallbacks(IMovementActionMapActions)" />
+    /// <seealso cref="MovementActionMapActions.RemoveCallbacks(IMovementActionMapActions)" />
+    public interface IMovementActionMapActions
     {
         /// <summary>
         /// Method invoked when associated input action "Moving Around" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
@@ -445,5 +584,20 @@ public partial class @CharacterController: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnJump(InputAction.CallbackContext context);
+    }
+    /// <summary>
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "MinimapActionMap" which allows adding and removing callbacks.
+    /// </summary>
+    /// <seealso cref="MinimapActionMapActions.AddCallbacks(IMinimapActionMapActions)" />
+    /// <seealso cref="MinimapActionMapActions.RemoveCallbacks(IMinimapActionMapActions)" />
+    public interface IMinimapActionMapActions
+    {
+        /// <summary>
+        /// Method invoked when associated input action "RoomSkill" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnRoomSkill(InputAction.CallbackContext context);
     }
 }

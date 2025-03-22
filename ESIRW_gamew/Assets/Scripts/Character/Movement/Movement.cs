@@ -39,13 +39,13 @@ public class Movement : MonoBehaviour
         jumpForce = jumpMax / jumpTimerValue;
         minJumpTimer = jumpTimerValue - (jumpMin / jumpForce);
         characterController = new CharacterController();
-        characterController.MainActionMap.Enable();
-        characterController.MainActionMap.Jump.started += StartJump;
+        characterController.MovementActionMap.Enable();
+        characterController.MovementActionMap.Jump.started += StartJump;
     }
 
     private void Update()
     {
-        MoveAround(characterController.MainActionMap.MovingAround.ReadValue<float>());
+        MoveAround(characterController.MovementActionMap.MovingAround.ReadValue<float>());
 
         CheckIfGrounded();
         Jump();
@@ -76,7 +76,7 @@ public class Movement : MonoBehaviour
     }
     public void Jump()
     {
-        if (characterController.MainActionMap.Jump.ReadValue<float>() != 1 || Physics2D.BoxCast(transform.position, new Vector2(boxSize.x * boxSizeRatio, boxSize.y), 0f, Vector2.up, jumpForce * Time.deltaTime, groundLayer))
+        if (characterController.MovementActionMap.Jump.ReadValue<float>() != 1 || Physics2D.BoxCast(transform.position, new Vector2(boxSize.x * boxSizeRatio, boxSize.y), 0f, Vector2.up, jumpForce * Time.deltaTime, groundLayer))
         {
             isJumping = false;
         }

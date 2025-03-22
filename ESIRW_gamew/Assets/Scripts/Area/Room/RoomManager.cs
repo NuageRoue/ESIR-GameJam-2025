@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 
 public class RoomManager : MonoBehaviour
@@ -18,10 +19,20 @@ public class RoomManager : MonoBehaviour
     GameObject DoorOpen;
     GameObject DoorClose;
 
+    TransitionManager transitionManager;
+    [SerializeField] MinimapManager minimapManager;
+
+    [SerializeField] CharacterController characterController;
+
     private void Awake()
     {
         roomList.Clear();
+        transitionManager = GetComponent<TransitionManager>();
         LoadLevel(level);
+        characterController = new CharacterController();
+        characterController.MinimapActionMap.Enable();
+        characterController.MinimapActionMap.RoomSkill.started += ActivateRoomSkill;
+
     }
 
     public void InstantiateRoom(GameObject room, Vector2 coords)
@@ -131,9 +142,19 @@ public class RoomManager : MonoBehaviour
         }
     }
 
+    RoomNode GetRoom(Vector2 pos)
+    {
+        foreach (RoomNode node in roomList)
+        {
+            if (node.coords == pos)
+            { return node; }
+        }
+        return null;
+    }
+
     bool MoveRoom(RoomNode room, Vector2 newPos)
     {
-        room.UpdatePos(newPos);
+        room?.UpdatePos(newPos);
         return true;
     }
 
@@ -204,6 +225,36 @@ public class RoomManager : MonoBehaviour
     {
         GameObject newRoom = GameObject.Instantiate(node.room.gameObject, new Vector3(node.coords.x * Room.Width, node.coords.y * Room.Height), roomParent.rotation, roomParent);
         roomList.Add(new(newRoom.GetComponent<Room>(), node.coords));
+    }
+
+    public void ActivateRoomSkill(InputAction.CallbackContext context)
+    {
+        foreach (RoomNode node in roomList)
+        {
+            if (node.coords == CurrentPos())
+            {
+                switch (node.room.skill)
+                {
+                    case Skill.pivot:
+                        RoomNode roomTop = GetRoom(CurrentPos() + new Vector2(0,1));
+                        RoomNode roomBottom = GetRoom(CurrentPos() + new Vector2(0,-1));
+                        RoomNode roomLeft = GetRoom(CurrentPos() + new Vector2(-1,0));
+                        RoomNode roomRight = GetRoom(CurrentPos() + new Vector2(1,0));
+
+                        MoveRoom(roomTop, CurrentPos() + new Vector2(1, 0));
+                        MoveRoom(roomRight, CurrentPos() + new Vector2(0, -1));
+                        MoveRoom(roomBottom, CurrentPos() + new Vector2(-1, 0));
+                        MoveRoom(roomLeft, CurrentPos() + new Vector2(0, 1));
+                        break;
+                }
+                minimapManager.UpdateMap();
+            }
+        }
+    }
+
+    public Vector2 CurrentPos()
+    {
+        return transitionManager.currentRoom;
     }
 }
 

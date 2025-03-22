@@ -7,6 +7,7 @@ public class Room : MonoBehaviour
     public static int Width { get; private set; } = 22;
     public static int Height { get; private set; }  = 12;
 
+    public Skill skill;
 
     public AnchorDirection AnchorPosition;
 
@@ -14,6 +15,13 @@ public class Room : MonoBehaviour
     {
         Destroy(gameObject);
     }
+}
+
+public enum Skill
+{
+    pivot,
+    mirror,
+    none
 }
 
 

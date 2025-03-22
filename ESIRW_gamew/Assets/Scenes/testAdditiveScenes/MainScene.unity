@@ -176,6 +176,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2a7bf2e9fb0231e408e9013fff7985ab, type: 3}
+--- !u!1 &586102410 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2167435479441804975, guid: 2a7bf2e9fb0231e408e9013fff7985ab, type: 3}
+  m_PrefabInstance: {fileID: 49558253}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1317750823
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,6 +328,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1869642372}
   - component: {fileID: 1869642373}
+  - component: {fileID: 1869642374}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -361,6 +367,26 @@ MonoBehaviour:
   room: {fileID: 5538059019184885231, guid: 2b70d33927c96b84981a5ce4f0d9bfe7, type: 3}
   roomList: []
   level: {fileID: 11400000, guid: feda87cda9f2f5d4b8213b58ae8c3ac2, type: 2}
+  minimapManager: {fileID: 0}
+--- !u!114 &1869642374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869642370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b20c667c63ac77a49a3dc2910400d576, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentRoom: {x: 0, y: 0}
+  lastRoom: {x: 0, y: 0}
+  currentCameraPosition: {x: 0, y: 0, z: 0}
+  lastCameraPosition: {x: 0, y: 0, z: 0}
+  cameraFollow: {fileID: 0}
+  cameraFollowSpeed: 0.33
+  player: {fileID: 586102410}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
