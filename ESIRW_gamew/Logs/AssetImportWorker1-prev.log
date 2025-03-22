@@ -11,19 +11,19 @@ C:\Program Files\Unity\Hub\Editor\6000.0.42f1\Editor\Unity.exe
 -name
 AssetImportWorker1
 -projectPath
-C:/Users/cleme/OneDrive/Code/Unity/ESIR-GameJam-2025/ESIRW gamew
+C:/Users/cleme/OneDrive/Code/Unity/ESIR-GameJam-2025/ESIRW_gamew
 -logFile
 Logs/AssetImportWorker1.log
 -srvPort
-62581
+53690
 -job-worker-count
 7
 -background-job-worker-count
 8
 -gc-helper-count
 1
-Successfully changed project path to: C:/Users/cleme/OneDrive/Code/Unity/ESIR-GameJam-2025/ESIRW gamew
-C:/Users/cleme/OneDrive/Code/Unity/ESIR-GameJam-2025/ESIRW gamew
+Successfully changed project path to: C:/Users/cleme/OneDrive/Code/Unity/ESIR-GameJam-2025/ESIRW_gamew
+C:/Users/cleme/OneDrive/Code/Unity/ESIR-GameJam-2025/ESIRW_gamew
 [UnityMemory] Configuration Parameters - Can be set up in boot.config
     "memorysetup-bucket-allocator-granularity=16"
     "memorysetup-bucket-allocator-bucket-count=8"
@@ -59,14 +59,14 @@ C:/Users/cleme/OneDrive/Code/Unity/ESIR-GameJam-2025/ESIRW gamew
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [20252]  Target information:
+Player connection [31328]  Target information:
 
-Player connection [20252]  * "[IP] 172.22.224.1 [Port] 0 [Flags] 2 [Guid] 2409705081 [EditorId] 2409705081 [Version] 1048832 [Id] WindowsEditor(7,NuageRoue378723) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [31328]  * "[IP] 172.22.224.1 [Port] 0 [Flags] 2 [Guid] 866852588 [EditorId] 866852588 [Version] 1048832 [Id] WindowsEditor(7,NuageRoue378723) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [20252]  * "[IP] 10.188.243.200 [Port] 0 [Flags] 2 [Guid] 2409705081 [EditorId] 2409705081 [Version] 1048832 [Id] WindowsEditor(7,NuageRoue378723) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
+Player connection [31328]  * "[IP] 10.188.243.200 [Port] 0 [Flags] 2 [Guid] 866852588 [EditorId] 866852588 [Version] 1048832 [Id] WindowsEditor(7,NuageRoue378723) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" 
 
-Player connection [20252] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [20252] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [31328] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [31328] Host joined alternative multi-casting on [225.0.0.222:34997]...
 JobSystem: Creating JobQueue using job-worker-count value 7
 Input System module state changed to: Initialized.
 [Physics::Module] Initialized fallback backend.
@@ -78,11 +78,11 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Refreshing native plugins compatible for Editor in 1.80 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 2.83 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 6000.0.42f1 (feb9a7235030)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/6000.0.42f1/Editor/Data/Resources/UnitySubsystems
-[Subsystems] Discovering subsystems at path C:/Users/cleme/OneDrive/Code/Unity/ESIR-GameJam-2025/ESIRW gamew/Assets
+[Subsystems] Discovering subsystems at path C:/Users/cleme/OneDrive/Code/Unity/ESIR-GameJam-2025/ESIRW_gamew/Assets
 GfxDevice: creating device client; kGfxThreadingModeNonThreaded
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
@@ -94,43 +94,43 @@ Initialize mono
 Mono path[0] = 'C:/Program Files/Unity/Hub/Editor/6000.0.42f1/Editor/Data/Managed'
 Mono path[1] = 'C:/Program Files/Unity/Hub/Editor/6000.0.42f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
 Mono config path = 'C:/Program Files/Unity/Hub/Editor/6000.0.42f1/Editor/Data/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56464
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56472
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: C:/Program Files/Unity/Hub/Editor/6000.0.42f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
-Registered in 0.001957 seconds.
-- Loaded All Assemblies, in  0.263 seconds
+Registered in 0.002103 seconds.
+- Loaded All Assemblies, in  0.241 seconds
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.220 seconds
-Domain Reload Profiling: 480ms
-	BeginReloadAssembly (92ms)
+- Finished resetting the current domain, in  0.229 seconds
+Domain Reload Profiling: 469ms
+	BeginReloadAssembly (81ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (23ms)
+		CreateAndSetChildDomain (0ms)
+	RebuildCommonClasses (22ms)
 	RebuildNativeTypeToScriptingClass (7ms)
-	initialDomainReloadingComplete (31ms)
-	LoadAllAssembliesAndSetupDomain (107ms)
-		LoadAssemblies (90ms)
+	initialDomainReloadingComplete (29ms)
+	LoadAllAssembliesAndSetupDomain (100ms)
+		LoadAssemblies (80ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (104ms)
-			TypeCache.Refresh (103ms)
-				TypeCache.ScanAssembly (95ms)
+		AnalyzeDomain (98ms)
+			TypeCache.Refresh (97ms)
+				TypeCache.ScanAssembly (87ms)
 			BuildScriptInfoCaches (0ms)
-			ResolveRequiredComponents (0ms)
-	FinalizeReload (220ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (230ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (185ms)
+		SetupLoadedEditorAssemblies (199ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (12ms)
+			InitializePlatformSupportModulesInManaged (19ms)
 			SetLoadedEditorAssemblies (3ms)
-			BeforeProcessingInitializeOnLoad (37ms)
-			ProcessInitializeOnLoadAttributes (95ms)
-			ProcessInitializeOnLoadMethodAttributes (38ms)
+			BeforeProcessingInitializeOnLoad (40ms)
+			ProcessInitializeOnLoadAttributes (106ms)
+			ProcessInitializeOnLoadMethodAttributes (32ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -139,104 +139,104 @@ Domain Reload Profiling: 480ms
 Worker process is ready to serve import requests
 Import Worker Mode flag is 0x00
 Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.545 seconds
-Refreshing native plugins compatible for Editor in 1.52 ms, found 4 plugins.
+- Loaded All Assemblies, in  0.569 seconds
+Refreshing native plugins compatible for Editor in 0.95 ms, found 4 plugins.
 Native extension for WindowsStandalone target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.606 seconds
-Domain Reload Profiling: 1147ms
-	BeginReloadAssembly (117ms)
+- Finished resetting the current domain, in  0.514 seconds
+Domain Reload Profiling: 1077ms
+	BeginReloadAssembly (110ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (5ms)
+		DisableScriptedObjects (3ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (25ms)
-	RebuildCommonClasses (25ms)
-	RebuildNativeTypeToScriptingClass (11ms)
-	initialDomainReloadingComplete (29ms)
-	LoadAllAssembliesAndSetupDomain (359ms)
-		LoadAssemblies (228ms)
+	RebuildCommonClasses (26ms)
+	RebuildNativeTypeToScriptingClass (7ms)
+	initialDomainReloadingComplete (31ms)
+	LoadAllAssembliesAndSetupDomain (389ms)
+		LoadAssemblies (251ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (190ms)
-			TypeCache.Refresh (127ms)
-				TypeCache.ScanAssembly (115ms)
-			BuildScriptInfoCaches (52ms)
-			ResolveRequiredComponents (9ms)
-	FinalizeReload (607ms)
+		AnalyzeDomain (199ms)
+			TypeCache.Refresh (134ms)
+				TypeCache.ScanAssembly (122ms)
+			BuildScriptInfoCaches (54ms)
+			ResolveRequiredComponents (8ms)
+	FinalizeReload (514ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (485ms)
+		SetupLoadedEditorAssemblies (423ms)
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (2ms)
-			SetLoadedEditorAssemblies (2ms)
-			BeforeProcessingInitializeOnLoad (88ms)
-			ProcessInitializeOnLoadAttributes (295ms)
-			ProcessInitializeOnLoadMethodAttributes (94ms)
-			AfterProcessingInitializeOnLoad (3ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (77ms)
+			ProcessInitializeOnLoadAttributes (259ms)
+			ProcessInitializeOnLoadMethodAttributes (78ms)
+			AfterProcessingInitializeOnLoad (4ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (5ms)
+		AwakeInstancesAfterBackupRestoration (4ms)
 Launched and connected shader compiler UnityShaderCompiler.exe after 0.01 seconds
-Refreshing native plugins compatible for Editor in 1.16 ms, found 4 plugins.
+Refreshing native plugins compatible for Editor in 1.58 ms, found 4 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 206 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6569 unused Assets / (7.6 MB). Loaded Objects now: 7211.
-Memory consumption went from 172.2 MB to 164.7 MB.
-Total: 7.507300 ms (FindLiveObjects: 0.486900 ms CreateObjectMapping: 0.349300 ms MarkObjects: 3.489300 ms  DeleteObjects: 3.180500 ms)
+Unloading 6548 unused Assets / (4.8 MB). Loaded Objects now: 7246.
+Memory consumption went from 173.7 MB to 168.8 MB.
+Total: 6.690700 ms (FindLiveObjects: 0.582600 ms CreateObjectMapping: 0.280700 ms MarkObjects: 3.595200 ms  DeleteObjects: 2.231000 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 645302.966454 seconds.
-  path: Assets/DefaultVolumeProfile.asset
-  artifactKey: Guid(3f9215ea0144899419cfbc0957140d3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/DefaultVolumeProfile.asset using Guid(3f9215ea0144899419cfbc0957140d3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '1e3ee85287093c2e01e2184a29fd3edf') in 0.0179607 seconds
+  Time since last request: 717844.237550 seconds.
+  path: Assets/InputSystem_Actions.inputactions
+  artifactKey: Guid(2bcd2660ca9b64942af0de543d8d7100) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/InputSystem_Actions.inputactions using Guid(2bcd2660ca9b64942af0de543d8d7100) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '1526cf67c1d1aaa9a72597cdbc7bb0b0') in 0.0186419 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 19
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/UniversalRenderPipelineGlobalSettings.asset
+  artifactKey: Guid(93b439a37f63240aca3dd4e01d978a9f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/UniversalRenderPipelineGlobalSettings.asset using Guid(93b439a37f63240aca3dd4e01d978a9f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '00c025d2039ced57596f58dea75cb28a') in 0.0008697 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
 
 ========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-- Loaded All Assemblies, in  0.498 seconds
-Refreshing native plugins compatible for Editor in 1.38 ms, found 4 plugins.
-Native extension for WindowsStandalone target not found
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.490 seconds
-Domain Reload Profiling: 987ms
-	BeginReloadAssembly (147ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (7ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (43ms)
-	RebuildCommonClasses (28ms)
-	RebuildNativeTypeToScriptingClass (12ms)
-	initialDomainReloadingComplete (21ms)
-	LoadAllAssembliesAndSetupDomain (288ms)
-		LoadAssemblies (237ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (113ms)
-			TypeCache.Refresh (5ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (99ms)
-			ResolveRequiredComponents (6ms)
-	FinalizeReload (491ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (363ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (2ms)
-			SetLoadedEditorAssemblies (2ms)
-			BeforeProcessingInitializeOnLoad (85ms)
-			ProcessInitializeOnLoadAttributes (236ms)
-			ProcessInitializeOnLoadMethodAttributes (35ms)
-			AfterProcessingInitializeOnLoad (3ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (8ms)
-Refreshing native plugins compatible for Editor in 1.38 ms, found 4 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 40 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 6567 unused Assets / (7.0 MB). Loaded Objects now: 7217.
-Memory consumption went from 149.4 MB to 142.4 MB.
-Total: 5.692600 ms (FindLiveObjects: 0.480300 ms CreateObjectMapping: 0.280400 ms MarkObjects: 2.745100 ms  DeleteObjects: 2.185900 ms)
+Received Import Request.
+  Time since last request: 17.499767 seconds.
+  path: Assets/TestPrefabs/room.prefab
+  artifactKey: Guid(2b70d33927c96b84981a5ce4f0d9bfe7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TestPrefabs/room.prefab using Guid(2b70d33927c96b84981a5ce4f0d9bfe7) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b6ae13889f35f7b97297e81e0899d6b4') in 0.2940686 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 15
 
-Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Import Request.
+  Time since last request: 0.000032 seconds.
+  path: Assets/TestPrefabs/Square.asset
+  artifactKey: Guid(1319cab376eb6894d975983118a8f794) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TestPrefabs/Square.asset using Guid(1319cab376eb6894d975983118a8f794) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ac021fcffd03e57a8f807cff75b77d08') in 0.0322076 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 3
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.602854 seconds.
+  path: Assets/TestPrefabs/level1_test/Door_Vert.prefab
+  artifactKey: Guid(4e960232abfc5464fa48505ba6021fb2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TestPrefabs/level1_test/Door_Vert.prefab using Guid(4e960232abfc5464fa48505ba6021fb2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '616b1d5332999782db18b4e1ba23ff97') in 0.0111228 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 8
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000016 seconds.
+  path: Assets/TestPrefabs/level1_test/Level_test.asset
+  artifactKey: Guid(feda87cda9f2f5d4b8213b58ae8c3ac2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TestPrefabs/level1_test/Level_test.asset using Guid(feda87cda9f2f5d4b8213b58ae8c3ac2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '5d49eb8ac939c5863138cde1378b2648') in 0.0010934 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/TestPrefabs/level1_test/room Variant 2.prefab
+  artifactKey: Guid(943fbad7c9d3abe4ab1c5360035f2bd6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/TestPrefabs/level1_test/room Variant 2.prefab using Guid(943fbad7c9d3abe4ab1c5360035f2bd6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c1c317aae2937a783fdda72ba6e3b1a4') in 0.0131726 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 37
+

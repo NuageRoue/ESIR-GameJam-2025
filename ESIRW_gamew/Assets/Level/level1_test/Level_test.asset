@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae51ba4385fe670489fdf979c16a966d, type: 3}
   m_Name: Level_test
   m_EditorClassIdentifier: 
-  RoomNodes: []
+  RoomNodes:
+  - room: {fileID: 654799813144455679, guid: 7c03509f35b470f4c881d36dabc2141c, type: 3}
+    coords: {x: 0, y: 0}
+  - room: {fileID: 77093362495069988, guid: 46b4a5b4ca1824245934f0a249917c43, type: 3}
+    coords: {x: 1, y: 0}
+  - room: {fileID: 4530474068327384292, guid: 943fbad7c9d3abe4ab1c5360035f2bd6, type: 3}
+    coords: {x: 1, y: 1}

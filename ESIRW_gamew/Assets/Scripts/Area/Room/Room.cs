@@ -14,8 +14,6 @@ public class Room : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
-    public List<Door> doorList;
 }
 
 
@@ -43,7 +41,7 @@ public class RoomNode
     
     public List<Door> Doors()
     {
-        return room.doorList;
+        return new List<Door>(room.GetComponentsInChildren<Door>()) ;
     }
 
     public bool RoomHasDoor(AnchorDirection entrance)

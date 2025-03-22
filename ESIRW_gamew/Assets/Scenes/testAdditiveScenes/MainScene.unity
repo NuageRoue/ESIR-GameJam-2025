@@ -303,6 +303,7 @@ MonoBehaviour:
   roomParent: {fileID: 1869642372}
   room: {fileID: 5538059019184885231, guid: 2b70d33927c96b84981a5ce4f0d9bfe7, type: 3}
   roomList: []
+  level: {fileID: 11400000, guid: feda87cda9f2f5d4b8213b58ae8c3ac2, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
