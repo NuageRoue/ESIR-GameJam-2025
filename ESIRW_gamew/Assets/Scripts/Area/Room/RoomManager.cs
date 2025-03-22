@@ -1,10 +1,158 @@
+using NUnit.Framework;
+using System;
 using System.Collections.Generic;
-using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
-
 public class RoomManager : MonoBehaviour
+{
+    [SerializeField] Transform roomParent;
+
+    [SerializeField] GameObject room;
+
+    [SerializeField] public List<RoomNode> roomList;
+
+    [SerializeField] Level level;
+
+    private void Start()
+    {
+        roomList.Clear();
+        LoadLevel(level);
+    }
+
+    public void InstantiateRoom(GameObject room, Vector2 coords)
+    {
+        GameObject newRoom = GameObject.Instantiate(room, new Vector3(coords.x * Room.Width, coords.y * Room.Height), roomParent.rotation, roomParent);
+        roomList.Add(new(newRoom.GetComponent<Room>(), coords));
+    }
+
+    private void Update()
+    {
+        /*if (Input.GetKeyDown(KeyCode.S))
+        {
+            Vector2 coord = new(0, 0);
+            if (CheckPos(coord))
+                DestroyRoom(coord);
+            else
+                InstantiateRoom(room, coord);
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Vector2 coord = new(-1, 0);
+            if (CheckPos(coord))
+                DestroyRoom(coord);
+            else
+                InstantiateRoom(room, coord);
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            Vector2 coord = new(1, 0);
+            if (CheckPos(coord))
+                DestroyRoom(coord);
+            else
+                InstantiateRoom(room, coord);
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            Vector2 coord = new(0, 1);
+            if (CheckPos(coord))
+                DestroyRoom(coord);
+            else
+                InstantiateRoom(room, coord);
+        }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            Vector2 coord = new(0, -1);
+            if (CheckPos(coord))
+                DestroyRoom(coord);
+            else
+                InstantiateRoom(room, coord);
+        }
+
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            Vector2 coord = new(0, 1);
+            foreach(RoomNode node in roomList)
+            {
+                MoveRoom(node, node.coords + coord);
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            Vector2 coord = new(-1, 0);
+            foreach (RoomNode node in roomList)
+            {
+                MoveRoom(node, node.coords + coord);
+            }
+
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            Vector2 coord = new(1, 0);
+            foreach (RoomNode node in roomList)
+            {
+                MoveRoom(node, node.coords + coord);
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            Vector2 coord = new(0, -1);
+            foreach (RoomNode node in roomList)
+            {
+                MoveRoom(node, node.coords + coord);
+            }
+        }*/
+    }
+
+    bool CheckPos(Vector2 pos)
+    {
+        foreach (RoomNode node in roomList)
+        {
+            if (node.coords == pos)
+            { return true; }
+        }
+        return false;
+    }
+
+    void DestroyRoom(Vector2 pos)
+    {
+        for (int i = 0; i < roomList.Count; i++)
+        {
+            if (roomList[i].coords == pos)
+            {
+                roomList[i].room.DestroyRoom();
+                roomList.RemoveAt(i);
+                return;
+            }
+        }
+    }
+
+    bool MoveRoom(RoomNode room, Vector2 newPos)
+    {
+        room.UpdatePos(newPos);
+        return true;
+    }
+
+    void LoadLevel(Level level)
+    {
+        foreach(RoomNode node in level.RoomNodes)
+        {
+            InstanciateNode(node);
+        }
+    }
+
+    private void InstanciateNode(RoomNode node)
+    {
+        GameObject newRoom = GameObject.Instantiate(node.room.gameObject, new Vector3(node.coords.x * Room.Width, node.coords.y * Room.Height), roomParent.rotation, roomParent);
+        roomList.Add(new(newRoom.GetComponent<Room>(), node.coords));
+    }
+}
+
+
+
+
+/*public class RoomManager : MonoBehaviour
 {
 
     [SerializeField]
@@ -32,3 +180,4 @@ public class RoomManager : MonoBehaviour
 
 
 }
+*/

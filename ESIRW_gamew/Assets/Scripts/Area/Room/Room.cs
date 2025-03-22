@@ -1,14 +1,45 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices.WindowsRuntime;
-using NUnit.Framework;
-using Unity.VisualScripting;
-using UnityEditor.Timeline.Actions;
 using UnityEngine;
+using static UnityEngine.RuleTile.TilingRuleOutput;
+
 
 public class Room : MonoBehaviour
+{
+    public static int Width { get; private set; } = 22;
+    public static int Height { get; private set; }  = 12;
+
+    public void DestroyRoom()
+    {
+        Destroy(gameObject);
+    }
+}
+
+
+[System.Serializable]
+public class RoomNode
+{
+    public Room room;
+    public Vector2 coords;
+
+    public RoomNode(Room room, Vector2 coords)
+    {
+        this.room = room;
+        this.coords = coords;
+    }
+
+    public void UpdatePos(Vector2 pos)
+    {
+        coords = pos;
+        room.transform.position = new Vector3(coords.x * Room.Width, coords.y * Room.Height);
+    }
+
+    public void MirrorRoom()
+    {
+        room.transform.localScale = new(-room.transform.localScale.x, room.transform.localScale.y, room.transform.localScale.z);
+    }
+}
+
+
+/*public class Room : MonoBehaviour
 {
     [SerializeField] 
     private AnchorDirectionSerialized[] possibleAnchorsConnectionsSerialized;
@@ -207,7 +238,7 @@ public class Anchor
         this.other = other;
         this.connections = connections;
     }
-}
+}*/
 
 /*
  * 
