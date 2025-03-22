@@ -9,39 +9,40 @@ public class TransitionManager : MonoBehaviour
     public Vector3 currentCameraPosition = Vector3.zero;
     public Vector3 lastCameraPosition = Vector3.zero;
 
-    [SerializeField] private GameObject cameraFollow;
     [SerializeField] private float cameraFollowSpeed = 0.33f;
     [SerializeField] private GameObject player;
 
     private Tween<float> tweenCamera;
+    private GameObject cameraFollow;
 
 
     private void Awake()
     {
+        cameraFollow = GameObject.FindAnyObjectByType<Camera>().gameObject;
         currentCameraPosition = gameObject.transform.position + new Vector3((currentRoom.x) * Room.Width, (currentRoom.y) * Room.Height, cameraFollow.transform.localPosition.z);
+        lastCameraPosition = currentCameraPosition;
     }
+
     private void UpdateTweenCamera()
     {
         System.Action<ITween<Vector3>> updateCirclePos = (t) =>
         {
             cameraFollow.gameObject.transform.transform.position = t.CurrentValue;
         };
-        
         cameraFollow.gameObject.Tween("TweenCamera", lastCameraPosition, currentCameraPosition, cameraFollowSpeed, TweenScaleFunctions.Linear, updateCirclePos);
+    }
+
+
+    public static Vector2 GridPosition(Vector3 position)
+    {
+        return new Vector2(Mathf.Round(position.x / Room.Width), Mathf.Round(position.y / Room.Height));
     }
 
     private void UpdateGridPlayerPosition()
     {
 
-        Debug.Log(currentRoom);
+        Vector2 realCurrentPosGrid = GridPosition(player.transform.position + gameObject.transform.position);
 
-        Vector3 realAbsolutePosition = player.transform.position + gameObject.transform.position;
-        Vector2 realCurrentPosGrid = new Vector2(
-            Mathf.Round(realAbsolutePosition.x / Room.Width), 
-            Mathf.Round(realAbsolutePosition.y / Room.Height)
-           );
-
-        
 
         if (!realCurrentPosGrid.Equals(currentRoom))
         {
@@ -53,8 +54,22 @@ public class TransitionManager : MonoBehaviour
 
             UpdateTweenCamera();
         }
-        
-        
+
+
+
+
+    }
+
+    public void UpdateOnTriggerDoor(Transform spawner)
+    {
+
+        Vector2 spawnerGrid = GridPosition(spawner.transform.position);
+
+        if (!spawnerGrid.Equals(currentRoom))
+        {
+            player.transform.position = spawner.transform.position;
+        }
+
     }
 
 

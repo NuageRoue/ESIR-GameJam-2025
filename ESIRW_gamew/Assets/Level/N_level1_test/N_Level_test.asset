@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae51ba4385fe670489fdf979c16a966d, type: 3}
+  m_Name: N_Level_test
+  m_EditorClassIdentifier: 
+  RoomNodes:
+  - room: {fileID: 654799813144455679, guid: b309f2da084e48543b9dc5b6401960bf, type: 3}
+    coords: {x: 0, y: 0}
+  - room: {fileID: 77093362495069988, guid: ed785a80b7dd0cd4991f7f986c6f3b11, type: 3}
+    coords: {x: 1, y: 0}
+  - room: {fileID: 4530474068327384292, guid: e11d47610826a514dbf26d6f6f04fa1c, type: 3}
+    coords: {x: 1, y: 1}
