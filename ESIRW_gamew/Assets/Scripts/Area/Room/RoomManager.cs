@@ -15,6 +15,9 @@ public class RoomManager : MonoBehaviour
 
     [SerializeField] Level level;
 
+    GameObject DoorOpen;
+    GameObject DoorClose;
+
     private void Start()
     {
         roomList.Clear();
@@ -134,12 +137,67 @@ public class RoomManager : MonoBehaviour
         return true;
     }
 
+    void CheckAdjacency()
+    {
+        foreach(RoomNode node in roomList)
+        {
+            foreach(Door door in node.Doors())
+            {
+                switch (door.DoorAsExit())
+                {
+                    case AnchorDirection.RIGHT_TOP:
+                    case AnchorDirection.RIGHT_BOTTOM:
+                        if (RoomHasDoor(node.coords + new Vector2(1, 0), door.DoorAsExit()))
+                            door.SetOpened();
+                        else 
+                            door.SetClosed();
+                        break;
+
+                    case AnchorDirection.LEFT_TOP:
+                    case AnchorDirection.LEFT_BOTTOM:
+                        if (RoomHasDoor(node.coords + new Vector2(-1, 0), door.DoorAsExit()))
+                            door.SetOpened();
+                        else
+                            door.SetClosed();
+                        break;
+
+                    case AnchorDirection.CEIL_LEFT:
+                    case AnchorDirection.CEIL_RIGHT:
+                        if (RoomHasDoor(node.coords + new Vector2(0, 1), door.DoorAsExit()))
+                            door.SetOpened();
+                        else
+                            door.SetClosed();
+                        break;
+
+                    case AnchorDirection.FLOOR_LEFT:
+                    case AnchorDirection.FLOOR_RIGHT:
+                        if (RoomHasDoor(node.coords + new Vector2(0, -1), door.DoorAsExit()))
+                            door.SetOpened();
+                        else
+                            door.SetClosed();
+                        break;
+                }
+            }
+        }
+    }
+
+    public bool RoomHasDoor(Vector2 pos, AnchorDirection entrance)
+    {
+        foreach (RoomNode node in roomList)
+        {
+            if (node.coords == pos)
+            { return node.RoomHasDoor(entrance); }
+        }
+        return false;
+    }
+
     void LoadLevel(Level level)
     {
         foreach(RoomNode node in level.RoomNodes)
         {
             InstanciateNode(node);
         }
+        CheckAdjacency();
     }
 
     private void InstanciateNode(RoomNode node)

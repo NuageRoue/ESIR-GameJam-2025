@@ -1,5 +1,5 @@
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
+using System.Collections.Generic;
 
 
 public class Room : MonoBehaviour
@@ -7,10 +7,15 @@ public class Room : MonoBehaviour
     public static int Width { get; private set; } = 22;
     public static int Height { get; private set; }  = 12;
 
+
+    public AnchorDirection AnchorPosition;
+
     public void DestroyRoom()
     {
         Destroy(gameObject);
     }
+
+    public List<Door> doorList;
 }
 
 
@@ -19,7 +24,6 @@ public class RoomNode
 {
     public Room room;
     public Vector2 coords;
-
     public RoomNode(Room room, Vector2 coords)
     {
         this.room = room;
@@ -36,6 +40,37 @@ public class RoomNode
     {
         room.transform.localScale = new(-room.transform.localScale.x, room.transform.localScale.y, room.transform.localScale.z);
     }
+    
+    public List<Door> Doors()
+    {
+        return room.doorList;
+    }
+
+    public bool RoomHasDoor(AnchorDirection entrance)
+    {
+        foreach(Door door in Doors())
+        {
+            if (door.DoorAsEntrance() == entrance)
+                return true;
+        }
+        return false;
+    }
+}
+
+[System.Flags]
+public enum AnchorDirection : byte
+{
+    CEIL_LEFT = 0b1000_0000,
+    CEIL_RIGHT = 0b0100_0000,
+    
+    FLOOR_LEFT = 0b0010_0000,
+    FLOOR_RIGHT = 0b0001_0000,
+
+    LEFT_BOTTOM = 0b0000_1000,
+    LEFT_TOP = 0b0000_0100,
+
+    RIGHT_BOTTOM = 0b0000_0010,
+    RIGHT_TOP = 0b0000_0001,
 }
 
 
