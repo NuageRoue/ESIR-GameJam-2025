@@ -49,7 +49,6 @@ public class Movement : MonoBehaviour
 
         CheckIfGrounded();
         Jump();
-
     }
     void CheckIfGrounded()
     {

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4898214143950857019}
   - component: {fileID: 424476021852961747}
   - component: {fileID: -8238394329642072699}
-  - component: {fileID: 4843416372741746695}
+  - component: {fileID: -5176441252624581815}
   m_Layer: 0
   m_Name: Door_Vert
   m_TagString: Untagged
@@ -102,14 +102,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position: 0
-  boxCollider: {fileID: -608775670878538296, guid: 5f310815472e1e848b978451ad84eb8a, type: 3}
+  boxCollider: {fileID: -5176441252624581815}
   collision:
     serializedVersion: 2
     m_Bits: 8
   noCollision:
     serializedVersion: 2
     m_Bits: 1
---- !u!61 &4843416372741746695
+--- !u!61 &-5176441252624581815
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,7 +122,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0

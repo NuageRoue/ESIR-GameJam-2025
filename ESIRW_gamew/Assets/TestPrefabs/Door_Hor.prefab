@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 972947667815815676}
   - component: {fileID: 8112812325327729558}
   - component: {fileID: 4016880515655640973}
-  - component: {fileID: -608775670878538296}
+  - component: {fileID: -1734737210769298557}
   m_Layer: 0
   m_Name: Door_Hor
   m_TagString: Untagged
@@ -102,14 +102,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   position: 0
-  boxCollider: {fileID: -608775670878538296}
+  boxCollider: {fileID: -1734737210769298557}
   collision:
     serializedVersion: 2
     m_Bits: 8
   noCollision:
     serializedVersion: 2
     m_Bits: 1
---- !u!61 &-608775670878538296
+--- !u!61 &-1734737210769298557
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,7 +122,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0

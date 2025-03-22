@@ -18,7 +18,7 @@ public class RoomManager : MonoBehaviour
     GameObject DoorOpen;
     GameObject DoorClose;
 
-    private void Start()
+    private void Awake()
     {
         roomList.Clear();
         LoadLevel(level);

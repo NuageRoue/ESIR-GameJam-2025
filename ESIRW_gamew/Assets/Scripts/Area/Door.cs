@@ -28,9 +28,10 @@ public class Door : MonoBehaviour
     public void SetOpened() // la fonction qui détermine si on peut passer par la porte
     {
         GetComponent<SpriteRenderer>().color = Color.green;
-        boxCollider.enabled = false;
+        //boxCollider.enabled = false;
         boxCollider.isTrigger = true;
-        boxCollider.includeLayers = (int)Mathf.Log(collision.value, 2);
+        //boxCollider.includeLayers = (int)Mathf.Log(collision.value, 2);
+        boxCollider.isTrigger = true;
         
         gameObject.layer = (int)Mathf.Log(noCollision.value, 2);
 
@@ -40,8 +41,8 @@ public class Door : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().color = Color.red;
         boxCollider.isTrigger = false;
-        boxCollider.enabled = true;
-        boxCollider.includeLayers = (int)Mathf.Log(noCollision.value, 2);
+        //boxCollider.enabled = true;
+        //boxCollider.includeLayers = (int)Mathf.Log(noCollision.value, 2);
         gameObject.layer = (int)Mathf.Log(collision.value, 2);
     }
 
