@@ -29,10 +29,14 @@ public class RoomManager : MonoBehaviour
         roomList.Clear();
         transitionManager = GetComponent<TransitionManager>();
         LoadLevel(level);
-        characterController = new CharacterController();
-        characterController.MinimapActionMap.Enable();
-        characterController.MinimapActionMap.RoomSkill.started += ActivateRoomSkill;
+        
 
+    }
+
+    public void SetupController(CharacterController characterController)
+    {
+        this.characterController = characterController;
+        characterController.MinimapActionMap.RoomSkill.started += ActivateRoomSkill;
     }
 
     public void InstantiateRoom(GameObject room, Vector2 coords)
@@ -152,6 +156,11 @@ public class RoomManager : MonoBehaviour
         return null;
     }
 
+    void MirrorRoom(RoomNode room)
+    {
+        room?.MirrorRoom();
+    }
+
     bool MoveRoom(RoomNode room, Vector2 newPos)
     {
         room?.UpdatePos(newPos);
@@ -231,23 +240,33 @@ public class RoomManager : MonoBehaviour
     {
         foreach (RoomNode node in roomList)
         {
+            RoomNode roomTop = GetRoom(CurrentPos() + new Vector2(0, 1));
+            RoomNode roomBottom = GetRoom(CurrentPos() + new Vector2(0, -1));
+            RoomNode roomLeft = GetRoom(CurrentPos() + new Vector2(-1, 0));
+            RoomNode roomRight = GetRoom(CurrentPos() + new Vector2(1, 0));
+
             if (node.coords == CurrentPos())
             {
                 switch (node.room.skill)
                 {
                     case Skill.pivot:
-                        RoomNode roomTop = GetRoom(CurrentPos() + new Vector2(0,1));
-                        RoomNode roomBottom = GetRoom(CurrentPos() + new Vector2(0,-1));
-                        RoomNode roomLeft = GetRoom(CurrentPos() + new Vector2(-1,0));
-                        RoomNode roomRight = GetRoom(CurrentPos() + new Vector2(1,0));
+                        
 
                         MoveRoom(roomTop, CurrentPos() + new Vector2(1, 0));
                         MoveRoom(roomRight, CurrentPos() + new Vector2(0, -1));
                         MoveRoom(roomBottom, CurrentPos() + new Vector2(-1, 0));
                         MoveRoom(roomLeft, CurrentPos() + new Vector2(0, 1));
                         break;
+                    case Skill.mirror:
+                        roomLeft = GetRoom(CurrentPos() + new Vector2(-1, 0));
+                        roomRight = GetRoom(CurrentPos() + new Vector2(1, 0));
+                        MirrorRoom(roomLeft);
+                        MirrorRoom(roomRight);
+                        break;
+
                 }
                 minimapManager.UpdateMap();
+                CheckAdjacency();
             }
         }
     }

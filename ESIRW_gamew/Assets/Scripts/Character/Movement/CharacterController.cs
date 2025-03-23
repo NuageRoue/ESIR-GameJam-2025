@@ -108,6 +108,15 @@ public partial class @CharacterController: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OpenMap"",
+                    ""type"": ""Button"",
+                    ""id"": ""9ba21058-f4d1-4924-ad86-a84a04e54bdb"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -231,6 +240,28 @@ public partial class @CharacterController: IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""580472ee-630f-4acb-bc83-06de9eacfc78"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenMap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0e8b6d6f-ebe1-45b7-aec8-fefefac4c7f6"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OpenMap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -242,6 +273,15 @@ public partial class @CharacterController: IInputActionCollection2, IDisposable
                     ""name"": ""RoomSkill"",
                     ""type"": ""Button"",
                     ""id"": ""b8a96a21-599c-4c38-ae66-9c0b23b08cb2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""CloseMap"",
+                    ""type"": ""Button"",
+                    ""id"": ""a3c3a6a0-220b-4009-a00d-2e3687b5bc5d"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -270,6 +310,28 @@ public partial class @CharacterController: IInputActionCollection2, IDisposable
                     ""action"": ""RoomSkill"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a14ccd9a-f6e0-4345-96a5-ce2daa1653d4"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CloseMap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e305f473-8690-4f64-bc62-958df8bb7598"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CloseMap"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -280,9 +342,11 @@ public partial class @CharacterController: IInputActionCollection2, IDisposable
         m_MovementActionMap = asset.FindActionMap("MovementActionMap", throwIfNotFound: true);
         m_MovementActionMap_MovingAround = m_MovementActionMap.FindAction("Moving Around", throwIfNotFound: true);
         m_MovementActionMap_Jump = m_MovementActionMap.FindAction("Jump", throwIfNotFound: true);
+        m_MovementActionMap_OpenMap = m_MovementActionMap.FindAction("OpenMap", throwIfNotFound: true);
         // MinimapActionMap
         m_MinimapActionMap = asset.FindActionMap("MinimapActionMap", throwIfNotFound: true);
         m_MinimapActionMap_RoomSkill = m_MinimapActionMap.FindAction("RoomSkill", throwIfNotFound: true);
+        m_MinimapActionMap_CloseMap = m_MinimapActionMap.FindAction("CloseMap", throwIfNotFound: true);
     }
 
     ~@CharacterController()
@@ -366,6 +430,7 @@ public partial class @CharacterController: IInputActionCollection2, IDisposable
     private List<IMovementActionMapActions> m_MovementActionMapActionsCallbackInterfaces = new List<IMovementActionMapActions>();
     private readonly InputAction m_MovementActionMap_MovingAround;
     private readonly InputAction m_MovementActionMap_Jump;
+    private readonly InputAction m_MovementActionMap_OpenMap;
     /// <summary>
     /// Provides access to input actions defined in input action map "MovementActionMap".
     /// </summary>
@@ -385,6 +450,10 @@ public partial class @CharacterController: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "MovementActionMap/Jump".
         /// </summary>
         public InputAction @Jump => m_Wrapper.m_MovementActionMap_Jump;
+        /// <summary>
+        /// Provides access to the underlying input action "MovementActionMap/OpenMap".
+        /// </summary>
+        public InputAction @OpenMap => m_Wrapper.m_MovementActionMap_OpenMap;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -417,6 +486,9 @@ public partial class @CharacterController: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @OpenMap.started += instance.OnOpenMap;
+            @OpenMap.performed += instance.OnOpenMap;
+            @OpenMap.canceled += instance.OnOpenMap;
         }
 
         /// <summary>
@@ -434,6 +506,9 @@ public partial class @CharacterController: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @OpenMap.started -= instance.OnOpenMap;
+            @OpenMap.performed -= instance.OnOpenMap;
+            @OpenMap.canceled -= instance.OnOpenMap;
         }
 
         /// <summary>
@@ -472,6 +547,7 @@ public partial class @CharacterController: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_MinimapActionMap;
     private List<IMinimapActionMapActions> m_MinimapActionMapActionsCallbackInterfaces = new List<IMinimapActionMapActions>();
     private readonly InputAction m_MinimapActionMap_RoomSkill;
+    private readonly InputAction m_MinimapActionMap_CloseMap;
     /// <summary>
     /// Provides access to input actions defined in input action map "MinimapActionMap".
     /// </summary>
@@ -487,6 +563,10 @@ public partial class @CharacterController: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "MinimapActionMap/RoomSkill".
         /// </summary>
         public InputAction @RoomSkill => m_Wrapper.m_MinimapActionMap_RoomSkill;
+        /// <summary>
+        /// Provides access to the underlying input action "MinimapActionMap/CloseMap".
+        /// </summary>
+        public InputAction @CloseMap => m_Wrapper.m_MinimapActionMap_CloseMap;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -516,6 +596,9 @@ public partial class @CharacterController: IInputActionCollection2, IDisposable
             @RoomSkill.started += instance.OnRoomSkill;
             @RoomSkill.performed += instance.OnRoomSkill;
             @RoomSkill.canceled += instance.OnRoomSkill;
+            @CloseMap.started += instance.OnCloseMap;
+            @CloseMap.performed += instance.OnCloseMap;
+            @CloseMap.canceled += instance.OnCloseMap;
         }
 
         /// <summary>
@@ -530,6 +613,9 @@ public partial class @CharacterController: IInputActionCollection2, IDisposable
             @RoomSkill.started -= instance.OnRoomSkill;
             @RoomSkill.performed -= instance.OnRoomSkill;
             @RoomSkill.canceled -= instance.OnRoomSkill;
+            @CloseMap.started -= instance.OnCloseMap;
+            @CloseMap.performed -= instance.OnCloseMap;
+            @CloseMap.canceled -= instance.OnCloseMap;
         }
 
         /// <summary>
@@ -584,6 +670,13 @@ public partial class @CharacterController: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnJump(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "OpenMap" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnOpenMap(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "MinimapActionMap" which allows adding and removing callbacks.
@@ -599,5 +692,12 @@ public partial class @CharacterController: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnRoomSkill(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "CloseMap" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnCloseMap(InputAction.CallbackContext context);
     }
 }

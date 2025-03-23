@@ -74,4 +74,31 @@ public class Door : MonoBehaviour
     {
         return position;
     }
+
+    public void ReverseSideDoor()
+    {
+        switch (position)
+        {// si elle est en haut à gauche, on entre par la droite
+            case (AnchorDirection.LEFT_TOP):
+            case (AnchorDirection.LEFT_BOTTOM):
+            case (AnchorDirection.RIGHT_TOP):
+            case (AnchorDirection.RIGHT_BOTTOM):
+                position = DoorAsEntrance();
+                break;
+
+            case (AnchorDirection.CEIL_LEFT):
+                position = AnchorDirection.CEIL_RIGHT;
+                break;
+            case (AnchorDirection.CEIL_RIGHT):
+                position = AnchorDirection.CEIL_LEFT;
+                break;
+            case (AnchorDirection.FLOOR_LEFT):
+                position = AnchorDirection.FLOOR_RIGHT;
+                break;
+            case (AnchorDirection.FLOOR_RIGHT):
+                position = AnchorDirection.FLOOR_LEFT;
+                break;
+
+        }
+    }
 }

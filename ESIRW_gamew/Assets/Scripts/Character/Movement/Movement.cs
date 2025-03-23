@@ -1,3 +1,4 @@
+using System;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -38,9 +39,9 @@ public class Movement : MonoBehaviour
         isJumping = false;
         jumpForce = jumpMax / jumpTimerValue;
         minJumpTimer = jumpTimerValue - (jumpMin / jumpForce);
-        characterController = new CharacterController();
-        characterController.MovementActionMap.Enable();
-        characterController.MovementActionMap.Jump.started += StartJump;
+        //characterController = new CharacterController();
+        //characterController.MovementActionMap.Enable();
+        
     }
 
     private void Update()
@@ -141,5 +142,11 @@ public class Movement : MonoBehaviour
     void ContextLogger(InputAction.CallbackContext context)
     {
         Debug.Log(context);
+    }
+
+    internal void SetupController(CharacterController characterController)
+    {
+        this.characterController = characterController;
+        this.characterController.MovementActionMap.Jump.started += StartJump;
     }
 }

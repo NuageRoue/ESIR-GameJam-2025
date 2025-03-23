@@ -45,6 +45,10 @@ public class RoomNode
     public void MirrorRoom()
     {
         room.transform.localScale = new(-room.transform.localScale.x, room.transform.localScale.y, room.transform.localScale.z);
+        foreach (Door door in Doors())
+        {
+            door.ReverseSideDoor();
+        }
     }
     
     public List<Door> Doors()

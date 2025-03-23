@@ -329,6 +329,7 @@ GameObject:
   - component: {fileID: 1869642372}
   - component: {fileID: 1869642373}
   - component: {fileID: 1869642374}
+  - component: {fileID: 1869642375}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -384,9 +385,20 @@ MonoBehaviour:
   lastRoom: {x: 0, y: 0}
   currentCameraPosition: {x: 0, y: 0, z: 0}
   lastCameraPosition: {x: 0, y: 0, z: 0}
-  cameraFollow: {fileID: 0}
   cameraFollowSpeed: 0.33
   player: {fileID: 586102410}
+--- !u!114 &1869642375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869642370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dc8bddd04430144f983d7b21b58c903, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
