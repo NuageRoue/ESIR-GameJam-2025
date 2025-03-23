@@ -2,6 +2,8 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using System;
+using UnityEngine.UI;
+using Unity.VisualScripting.Dependencies.NCalc;
 
 public class MinimapManager : MonoBehaviour
 {
@@ -13,7 +15,9 @@ public class MinimapManager : MonoBehaviour
     [SerializeField] GameObject mappedRoom;
     [SerializeField] public static int width = 100;
     [SerializeField] public static int height = 55;
-
+    [SerializeField] Image logo;
+    [SerializeField] Sprite logoPivot;
+    [SerializeField] Sprite logoMirror;
 
     [SerializeField] Color pivotColor;
     [SerializeField] Color mirrorColor;
@@ -48,15 +52,34 @@ public class MinimapManager : MonoBehaviour
         foreach (Map map in maps)
         {
             if (map.RoomSkill() == Skill.pivot)
+            {
                 map.SetColor(pivotColor);
+            }
             else if (map.RoomSkill() == Skill.mirror)
+            {
                 map.SetColor(mirrorColor);
+            }
             else
+            {
                 map.SetColor(neutralColor);
-
+            }
             if (roomManager.CurrentPos() == map.coords)
             {
                 map.IsInRoom();
+                if (map.RoomSkill() == Skill.pivot)
+                {
+                    logo.gameObject.SetActive(true);
+                    logo.sprite = logoPivot;
+                }
+                else if (map.RoomSkill() == Skill.mirror)
+                {
+                    logo.gameObject.SetActive(true);
+                    logo.sprite = logoMirror;
+                }
+                else
+                {
+                    logo.gameObject.SetActive(false);
+                }
             }
         }
     }
@@ -69,6 +92,7 @@ public class MinimapManager : MonoBehaviour
         }
 
         maps.Clear();
+        
 
     }
 
