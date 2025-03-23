@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 386380960}
   - component: {fileID: 386380959}
   - component: {fileID: 386380962}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -374,7 +374,7 @@ MonoBehaviour:
   roomParent: {fileID: 821719916}
   room: {fileID: 5538059019184885231, guid: 2b70d33927c96b84981a5ce4f0d9bfe7, type: 3}
   roomList: []
-  level: {fileID: 11400000, guid: feda87cda9f2f5d4b8213b58ae8c3ac2, type: 2}
+  level: {fileID: 11400000, guid: 31c2c9b3479db4a4bb9e65711892dde6, type: 2}
   minimapManager: {fileID: 3305050436303424190}
 --- !u!4 &821719916
 Transform:
@@ -429,9 +429,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2150594350884706120, guid: 2a7bf2e9fb0231e408e9013fff7985ab, type: 3}
+      propertyPath: m_SortingLayer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2150594350884706120, guid: 2a7bf2e9fb0231e408e9013fff7985ab, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1968123299
+      objectReference: {fileID: 0}
     - target: {fileID: 2167435479441804975, guid: 2a7bf2e9fb0231e408e9013fff7985ab, type: 3}
       propertyPath: m_Name
       value: CharacterTest
+      objectReference: {fileID: 0}
+    - target: {fileID: 2167435479441804975, guid: 2a7bf2e9fb0231e408e9013fff7985ab, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5120978142819300857, guid: 2a7bf2e9fb0231e408e9013fff7985ab, type: 3}
       propertyPath: m_LocalPosition.x

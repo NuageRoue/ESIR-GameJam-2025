@@ -1,3 +1,4 @@
+using System;
 using DigitalRuby.Tween;
 using UnityEngine;
 
@@ -34,7 +35,10 @@ public class EnemyDynamic : MonoBehaviour
         {
             gameObject.transform.position = t.CurrentValue;
         };
-        gameObject.Tween("TweenEnemy", last, current, tweenSpeed, TweenScaleFunctions.QuadraticEaseInOut, updatePos);
+
+        Guid guid = Guid.NewGuid();
+        String tweenName = guid.ToString();
+        gameObject.Tween(tweenName, last, current, tweenSpeed, TweenScaleFunctions.QuadraticEaseInOut, updatePos);
     }
 
 }

@@ -1,4 +1,5 @@
 using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
 public class Door : MonoBehaviour
@@ -9,19 +10,39 @@ public class Door : MonoBehaviour
     [SerializeField] LayerMask noCollision;
     [SerializeField] Transform spawner;
 
+    [SerializeField] Sprite closeDoor;
+    [SerializeField] Sprite openDoor;
+
+    private bool lastSprite = true;
+    private bool currentSprite = true;
+    private SpriteRenderer spriteRenderer;
     private TransitionManager transitionManager;
+
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         transitionManager = GameObject.FindAnyObjectByType<TransitionManager>();
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-
+        if (lastSprite != currentSprite)
+        {
+            lastSprite = currentSprite;
+        
+        if (currentSprite)
+        {
+            spriteRenderer.sprite = openDoor;
+        } else
+        {
+            spriteRenderer.sprite = closeDoor;
+        }
+        }
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -30,7 +51,7 @@ public class Door : MonoBehaviour
 
     public void SetOpened() // la fonction qui détermine si on peut passer par la porte
     {
-        GetComponent<SpriteRenderer>().color = Color.green;
+        currentSprite = true;
         boxCollider.isTrigger = true;
         gameObject.layer = (int)Mathf.Log(noCollision.value, 2);
 
@@ -38,7 +59,7 @@ public class Door : MonoBehaviour
 
     public void SetClosed() // la fonction qui détermine si on peut passer par la porte
     {
-        GetComponent<SpriteRenderer>().color = Color.red;
+        currentSprite = false;
         boxCollider.isTrigger = false;
         gameObject.layer = (int)Mathf.Log(collision.value, 2);
 
