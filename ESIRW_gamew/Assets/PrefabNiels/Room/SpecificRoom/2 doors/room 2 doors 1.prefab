@@ -999,7 +999,7 @@ GameObject:
   - component: {fileID: 3012906516845631711}
   - component: {fileID: -712847700465629579}
   m_Layer: 3
-  m_Name: room 2 doors
+  m_Name: room 2 doors 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1013,7 +1013,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5538059019184885231}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1021,7 +1021,7 @@ Transform:
   - {fileID: 2071092697489133949}
   - {fileID: 6988911799396831685}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &-712847700465629579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1035,7 +1035,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skill: 2
-  AnchorPosition: 12
+  AnchorPosition: 3
 --- !u!1001 &2192966968605741632
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1046,7 +1046,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8238394329642072699, guid: 09c37ad49a92bbf43b773e469e51bee4, type: 3}
       propertyPath: position
-      value: 8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 760490510365150291, guid: 09c37ad49a92bbf43b773e469e51bee4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1116,7 +1116,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8238394329642072699, guid: 09c37ad49a92bbf43b773e469e51bee4, type: 3}
       propertyPath: position
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 760490510365150291, guid: 09c37ad49a92bbf43b773e469e51bee4, type: 3}
       propertyPath: m_LocalPosition.x

@@ -15,7 +15,7 @@ MonoBehaviour:
   RoomNodes:
   - room: {fileID: -712847700465629579, guid: b48345620a6b70845bea40ffd5004e92, type: 3}
     coords: {x: 0, y: 0}
-  - room: {fileID: -712847700465629579, guid: 7c85eebea8b5cfd4bb4503a9ebc7e08e, type: 3}
-    coords: {x: 1, y: 0}
-  - room: {fileID: -712847700465629579, guid: 50dedea70ec700341b13c8e1ed04e69d, type: 3}
-    coords: {x: 2, y: 0}
+  - room: {fileID: -712847700465629579, guid: b78b504a0e294084bb80ec43aaf9a91c, type: 3}
+    coords: {x: -1, y: 0}
+  - room: {fileID: -712847700465629579, guid: 040664bc86425994c92ff81f04a572a5, type: 3}
+    coords: {x: -2, y: 0}
