@@ -37,11 +37,12 @@ public class GameManager : MonoBehaviour
         characterController.MovementActionMap.Disable();
 
         map.SetActive(true);
+        map.GetComponentInChildren<MinimapManager>().DisplayMinimap();
     }
 
     void CloseMap(InputAction.CallbackContext context)
     {
-        map.SetActive(false);
+        map.gameObject.SetActive(false);
         characterController.MinimapActionMap.Disable();
         characterController.MovementActionMap.Enable();
     }

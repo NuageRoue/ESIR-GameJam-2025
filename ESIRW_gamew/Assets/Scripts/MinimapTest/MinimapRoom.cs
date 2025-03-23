@@ -1,5 +1,6 @@
-using UnityEditor.Overlays;
 using UnityEngine;
+
+using UnityEngine.UI;
 
 public class MinimapRoom : MonoBehaviour
 {
@@ -18,5 +19,11 @@ public class MinimapRoom : MonoBehaviour
     void Update()
     {
         animator.SetBool("isGlowing", isInRoom);
+    }
+
+    internal void SetColor(Color color)
+    {
+        Debug.Log(name + ": new color");
+        GetComponent<Image>().color = color;
     }
 }

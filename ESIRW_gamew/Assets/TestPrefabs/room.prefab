@@ -916,4 +916,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 816eba027db1ca248973f2922a400f45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skill: 0
   AnchorPosition: 0

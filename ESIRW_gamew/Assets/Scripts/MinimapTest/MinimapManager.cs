@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
+using System;
 
 public class MinimapManager : MonoBehaviour
 {
@@ -8,14 +9,15 @@ public class MinimapManager : MonoBehaviour
     [SerializeField] Level level; // later, the info are taken from the room manager
 
     [SerializeField] RoomManager roomManager;
-    [SerializeField] Vector2 currentPos;
 
     [SerializeField] GameObject mappedRoom;
     [SerializeField] public static int width = 100;
     [SerializeField] public static int height = 55;
 
 
-
+    [SerializeField] Color pivotColor;
+    [SerializeField] Color mirrorColor;
+    [SerializeField] Color neutralColor;
 
     [SerializeField] List<Map> maps;
 
@@ -32,8 +34,9 @@ public class MinimapManager : MonoBehaviour
         
     }
 
-    void DisplayMinimap()
+    public void DisplayMinimap()
     {
+        EmptyMap();
         foreach (RoomNode node in roomManager.roomList)
         {
             Debug.Log("there");
@@ -44,12 +47,29 @@ public class MinimapManager : MonoBehaviour
         }
         foreach (Map map in maps)
         {
-            if (currentPos == map.coords)
+            if (map.RoomSkill() == Skill.pivot)
+                map.SetColor(pivotColor);
+            else if (map.RoomSkill() == Skill.mirror)
+                map.SetColor(mirrorColor);
+            else
+                map.SetColor(neutralColor);
+
+            if (roomManager.CurrentPos() == map.coords)
             {
                 map.IsInRoom();
-                break;
             }
         }
+    }
+
+    private void EmptyMap()
+    {
+        for (int i = maps.Count - 1; i >= 0; i--)
+        {
+            Destroy(maps[i].room.gameObject);
+        }
+
+        maps.Clear();
+
     }
 
     public void UpdateMap()
@@ -92,6 +112,16 @@ public class Map
         room.GetComponent<RectTransform>().anchoredPosition = new(node.coords.x * MinimapManager.width, node.coords.y * MinimapManager.height);
     }
 
+    public void SetColor(Color color)
+    {
+        Debug.Log("setting color for a room:"+color);
+        room.SetColor(color);
+    }
+
+    public Skill RoomSkill()
+    {
+        return node.room.skill;
+    }
     
 
 }

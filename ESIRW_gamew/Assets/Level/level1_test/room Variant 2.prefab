@@ -86,6 +86,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -712847700465629579, guid: 2b70d33927c96b84981a5ce4f0d9bfe7, type: 3}
+      propertyPath: skill
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -712847700465629579, guid: 2b70d33927c96b84981a5ce4f0d9bfe7, type: 3}
       propertyPath: doorList.Array.size
       value: 1
       objectReference: {fileID: 0}
